@@ -1,9 +1,9 @@
-import Modal from 'react-modal';
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
 import { createServer } from "miragejs";
 import { useState } from "react";
+import { NewTransactionModal } from "./components/NewTransactionModal";
 
 createServer({
   routes() {
@@ -38,12 +38,10 @@ function App() {
     <div className="App">
       <Header onOpenNewTransactionModal={handleOpenNewTransctionModal}/>
       <Dashboard />
-      <Modal
+      <NewTransactionModal 
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleCloeseNewTransctionModal}
-      >
-        <h1>Transação </h1>
-      </Modal>
+        />
       <GlobalStyle />
     </div>
   );
