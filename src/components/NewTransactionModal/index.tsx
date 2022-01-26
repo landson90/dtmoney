@@ -24,9 +24,14 @@ export function NewTransactionModal({
   const[category, setCategory] = useState('');
 
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    createTransaction({title, amount, category, type})
+    await createTransaction({title, amount, category, type})
+    setTitle('');
+    setAmount(0);
+    setCategory('');
+    setType('deposit')
+    onRequestClose();
   }
   return (
     <Modal
@@ -68,7 +73,7 @@ export function NewTransactionModal({
             <span>Saída</span>
           </RadioBox>
         </TransactionTypeContainer>
-        <input type="Categoria" placeholder="Categoriad" value={category} onChange={event => setCategory(event.target.value)}/>
+        <input type="Categoria" placeholder="Categoria" value={category} onChange={event => setCategory(event.target.value)}/>
         <button type="submit">Cadastra</button>
       </Container>
     </Modal>
