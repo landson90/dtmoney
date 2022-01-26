@@ -6,10 +6,7 @@ import { Container } from "./styled";
 
 
 export function Dashboard() {
-    useEffect(() => {
-        api.get('/transactions')
-            .then(response => console.log(response))
-    }, []);
+    
     return(
         <Container>
             <Summary />
